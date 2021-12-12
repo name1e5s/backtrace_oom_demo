@@ -1,0 +1,27 @@
+[package]
+name = "pn"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+crate-type = ["staticlib", "cdylib", "lib"]
+name = "pn"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[patch.crates-io]
+backtrace = { git = "https://github.com/name1e5s/backtrace-rs.git", branch = "backtrace_size_limit_128" }
+
+[dependencies]
+backtrace = "*"
+uniffi_macros = "*"
+uniffi = {version="*", features=["builtin-bindgen"]}
+
+[build-dependencies]
+uniffi_build = {version="*", features=["builtin-bindgen"]}
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 0
